@@ -1,6 +1,6 @@
 {
   "name": "@pito-plugin/media",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "pito plugin for media",
   "repository": {
     "type": "git",
