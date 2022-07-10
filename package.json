@@ -1,0 +1,60 @@
+{
+  "name": "@pito-plugin/media",
+  "version": "1.0.0",
+  "description": "pito plugin for media",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamGreedy/pito-media.git"
+  },
+  "main": "./cjs/node.js",
+  "module": "./esm/index.js",
+  "types": "./types/index.d.ts",
+  "exports": {
+    "./browser": {
+      "import": "./browser/esm/browser.js",
+      "types": "./browser/types/browser.d.ts",
+      "require": "./browser/cjs/browser.js"
+    },
+    "./node": {
+      "import": "./node/esm/node.js",
+      "types": "./node/types/node.d.ts",
+      "require": "./node/cjs/node.js"
+    }
+  },
+  "files": [
+    "node",
+    "browser"
+  ],
+  "scripts": {
+    "test": "tap --ts",
+    "build": "npm run clear & tsc -b ./node/cjs/tsconfig.json ./node/esm/tsconfig.json ./node/types/tsconfig.json ./browser/cjs/tsconfig.json ./browser/esm/tsconfig.json ./browser/types/tsconfig.json",
+    "watch": "npm run clear & tsc -b ./node/cjs/tsconfig.json ./node/esm/tsconfig.json ./node/types/tsconfig.json ./browser/cjs/tsconfig.json ./browser/esm/tsconfig.json ./browser/types/tsconfig.json --watch",
+    "clear": "npm run clear:cjs & npm run clear:esm & npm run clear:types",
+    "clear:cjs": "rimraf ./{node,browser}/cjs/**/*.{js,js.map,d.ts,d.ts.map,tsbuildinfo}",
+    "clear:esm": "rimraf ./{node,browser}/esm/**/*.{js,js.map,d.ts,d.ts.map,tsbuildinfo}",
+    "clear:types": "rimraf ./{node,browser}/types/**/*.{js,js.map,d.ts,d.ts.map,tsbuildinfo}",
+    "prepack": "npm run build"
+  },
+  "keywords": [
+    "typescript",
+    "json-schema",
+    "pito"
+  ],
+  "author": "egoavara",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.0.3",
+    "@types/tap": "^15.0.7",
+    "rimraf": "^3.0.2",
+    "tap": "^16.3.0",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4",
+    "pito": "^0.4.0"
+  },
+  "dependencies": {
+    "rfc4648": "^1.5.2"
+  },
+  "peerDependencies": {
+    "pito": "^0.4.0"
+  }
+}

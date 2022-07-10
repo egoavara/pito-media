@@ -1,0 +1,41 @@
+{
+    "folders": [
+        {
+            "name": "[source:node]",
+            "path": "./node/src",
+        },
+        {
+            "name": "[source:browser]",
+            "path": "./browser/src",
+        },
+        {
+            "name": "[tests]",
+            "path": "./tests",
+        },
+        {
+            "name": "[root]",
+            "path": ".",
+        }
+    ],
+    "settings": {
+        "typescript.preferences.importModuleSpecifierEnding": "js",
+        "prettier.tabWidth": 4,
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "watch",
+                "type": "npm",
+                "script": "watch",
+                "problemMatcher": [
+                    "$tsc-watch"
+                ],
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                }
+            }
+        ]
+    }
+}

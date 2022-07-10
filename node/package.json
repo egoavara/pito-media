@@ -1,0 +1,29 @@
+{
+  "main": "./cjs/node.js",
+  "module": "./esm/node.js",
+  "types": "./types/node.d.ts",
+  "exports": {
+    ".": {
+      "import": "./esm/node.js",
+      "types": "./types/node.d.ts",
+      "require": "./cjs/node.js"
+    }
+  },
+  "files": [
+    "cjs/**/*.js",
+    "cjs/package.json",
+    "types/**/*.d.ts",
+    "esm/**/*.js",
+    "esm/package.json"
+  ],
+  
+  "devDependencies": {
+    "pito": "^0.4.0"
+  },
+  "dependencies": {
+    "rfc4648": "^1.5.2"
+  },
+  "peerDependencies": {
+    "pito": "^0.4.0"
+  }
+}
