@@ -1,6 +1,6 @@
 {
   "name": "@pito-plugin/media",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "pito plugin for media",
   "repository": {
     "type": "git",
@@ -10,13 +10,13 @@
   "exports": {
     ".": {
       "import": {
-        "node":"./esm/node.js",
-        "default":"./esm/browser.js"
+        "node": "./esm/node.js",
+        "default": "./esm/browser.js"
       },
       "types": "./types/common.d.ts",
       "require": {
-        "node":"./cjs/node.js",
-        "default":"./cjs/browser.js"
+        "node": "./cjs/node.js",
+        "default": "./cjs/browser.js"
       }
     }
   },
