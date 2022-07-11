@@ -6,33 +6,30 @@
     "type": "git",
     "url": "https://github.com/iamGreedy/pito-media.git"
   },
-  "main": "./cjs/node.js",
-  "module": "./esm/index.js",
-  "types": "./types/index.d.ts",
+  "types": "./types/common.d.ts",
   "exports": {
-    "./browser": {
-      "import": "./browser/esm/browser.js",
-      "types": "./browser/types/browser.d.ts",
-      "require": "./browser/cjs/browser.js"
-    },
-    "./node": {
-      "import": "./node/esm/node.js",
-      "types": "./node/types/node.d.ts",
-      "require": "./node/cjs/node.js"
+    ".": {
+      "import": {
+        "node":"./esm/node.js",
+        "default":"./esm/browser.js"
+      },
+      "types": "./types/common.d.ts",
+      "require": {
+        "node":"./cjs/node.js",
+        "default":"./cjs/browser.js"
+      }
     }
   },
   "files": [
-    "node",
-    "browser"
+    "./cjs/**/*.js",
+    "./types/**/*.d.ts",
+    "./esm/**/*.js"
   ],
   "scripts": {
     "test": "tap --ts",
-    "build": "npm run clear & tsc -b ./node/cjs/tsconfig.json ./node/esm/tsconfig.json ./node/types/tsconfig.json ./browser/cjs/tsconfig.json ./browser/esm/tsconfig.json ./browser/types/tsconfig.json",
-    "watch": "npm run clear & tsc -b ./node/cjs/tsconfig.json ./node/esm/tsconfig.json ./node/types/tsconfig.json ./browser/cjs/tsconfig.json ./browser/esm/tsconfig.json ./browser/types/tsconfig.json --watch",
-    "clear": "npm run clear:cjs & npm run clear:esm & npm run clear:types",
-    "clear:cjs": "rimraf ./{node,browser}/cjs/**/*.{js,js.map,d.ts,d.ts.map,tsbuildinfo}",
-    "clear:esm": "rimraf ./{node,browser}/esm/**/*.{js,js.map,d.ts,d.ts.map,tsbuildinfo}",
-    "clear:types": "rimraf ./{node,browser}/types/**/*.{js,js.map,d.ts,d.ts.map,tsbuildinfo}",
+    "build": "npm run clear & tsc -b ./cjs/tsconfig.json ./esm/tsconfig.json ./types/tsconfig.json",
+    "watch": "npm run clear & tsc -b ./cjs/tsconfig.json ./esm/tsconfig.json ./types/tsconfig.json --watch",
+    "clear": "rimraf ./{cjs,esm,types}/**/*.{js,js.map,d.ts,d.ts.map,tsbuildinfo}",
     "prepack": "npm run build"
   },
   "keywords": [

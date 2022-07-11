@@ -1,12 +1,8 @@
 {
     "folders": [
         {
-            "name": "[source:node]",
-            "path": "./node/src",
-        },
-        {
-            "name": "[source:browser]",
-            "path": "./browser/src",
+            "name": "[source]",
+            "path": "./src",
         },
         {
             "name": "[tests]",

@@ -2,34 +2,18 @@
 
 node_modules
 
-node/cjs/**/*.js
-node/cjs/**/*.js.map
-node/cjs/**/*.d.ts
-node/cjs/**/*.d.ts.map
-node/cjs/**/*.tsbuildinfo
+esm/**/*.js
+esm/**/*.js.map
+esm/**/*.d.ts
+esm/**/*.d.ts.map
+esm/**/*.tsbuildinfo
 
-node/types/**/*.d.ts
-node/types/**/*.d.ts.map
-node/types/**/*.tsbuildinfo
+cjs/**/*.js
+cjs/**/*.js.map
+cjs/**/*.d.ts
+cjs/**/*.d.ts.map
+cjs/**/*.tsbuildinfo
 
-node/esm/**/*.js
-node/esm/**/*.js.map
-node/esm/**/*.d.ts
-node/esm/**/*.d.ts.map
-node/esm/**/*.tsbuildinfo
-
-browser/cjs/**/*.js
-browser/cjs/**/*.js.map
-browser/cjs/**/*.d.ts
-browser/cjs/**/*.d.ts.map
-browser/cjs/**/*.tsbuildinfo
-
-browser/types/**/*.d.ts
-browser/types/**/*.d.ts.map
-browser/types/**/*.tsbuildinfo
-
-browser/esm/**/*.js
-browser/esm/**/*.js.map
-browser/esm/**/*.d.ts
-browser/esm/**/*.d.ts.map
-browser/esm/**/*.tsbuildinfo
+types/**/*.d.ts
+types/**/*.d.ts.map
+types/**/*.tsbuildinfo

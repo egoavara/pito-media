@@ -1,3 +1,4 @@
+import { pito } from "pito"
 
 export const TextMediaType = [
     'application/json'
@@ -9,6 +10,7 @@ export const TextMediaType = [
     , 'text/html'
     , 'text/javascript'
 ] as const
+
 export const BinaryMediaType = [
     'audio/aac'
     , 'audio/midi'
@@ -39,10 +41,12 @@ export const BinaryMediaType = [
     , 'font/woff'
     , 'font/woff2'
 ] as const
+
 export const MediaType = [
     ...TextMediaType,
     ...BinaryMediaType,
 ] as const
+
 export const Encoding = [
     '7bit'
     , '8bit'
@@ -64,3 +68,42 @@ export function isTextMediaType(media: string): media is TextMediaType { return 
 export function isBinaryMediaType(media: string): media is BinaryMediaType { return BinaryMediaType.includes(media as any) }
 export function isEncoding(encoding: string): encoding is Encoding { return Encoding.includes(encoding as any) }
 
+// 
+export interface BaseMedia {
+    readonly content: string
+    toEncodedText(): string
+    toBuffer(): Promise<ArrayBuffer>
+}
+
+export interface TextMediaInterface extends BaseMedia {
+    readonly mediaType: TextMediaType
+}
+export interface BinaryMediaInterface extends BaseMedia {
+    readonly mediaType: BinaryMediaType
+    readonly encoding: Encoding
+}
+export interface TextMediaConstructor {
+    new(mediaType: TextMediaType, content: string): TextMediaInterface
+}
+export interface BinaryMediaConstructor {
+    new(mediaType: BinaryMediaType, content: string, encoding: Encoding): BinaryMediaInterface
+}
+// ===========================
+export type MediaTypeOption = {
+    contentEncoding: Encoding
+}
+export type MediaTypeScheme<ContentMediaType extends MediaType> = {
+    type: 'string'
+    contentMediaType: ContentMediaType
+}
+export type PitoMediaType<ContentMediaType extends MediaType = MediaType> = ContentMediaType extends TextMediaType
+    ? pito<string, TextMediaInterface, MediaTypeScheme<ContentMediaType>, MediaTypeOption>
+    : pito<string, BinaryMediaInterface, MediaTypeScheme<ContentMediaType>, MediaTypeOption>
+declare module 'pito' {
+    interface PitoPlugin {
+        Media: <ContentMediaType extends MediaType = MediaType, ContentEncoding extends Encoding = 'base64'>(mediaType: ContentMediaType, options?: { encoding?: ContentEncoding }) => PitoMediaType<ContentMediaType>
+    }
+    namespace pito {
+        type Media<ContentMediaType extends MediaType = MediaType> = PitoMediaType<ContentMediaType>
+    }
+}
