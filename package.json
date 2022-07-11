@@ -21,9 +21,9 @@
     }
   },
   "files": [
-    "./cjs/**/*.js",
-    "./types/**/*.d.ts",
-    "./esm/**/*.js"
+    "cjs/**/*.js",
+    "types/**/*.d.ts",
+    "esm/**/*.js"
   ],
   "scripts": {
     "test": "tap --ts",
